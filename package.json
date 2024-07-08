@@ -1,0 +1,31 @@
+{
+  "name": "react-modal-mc",
+  "version": "1.1.5",
+  "description": "A simple React modal component.",
+  "main": "src/React-Modal.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src/React-Modal.css"
+  ],
+  "scripts": {
+      "build": "babel src --out-dir lib && cp src/React-Modal.css lib/"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "component"
+  ],
+  "author": "Votre Nom",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7"
+  }
+}
