@@ -8,6 +8,8 @@ This is a modal component for React. Developped for a student project and used i
 - [Node.js (Version 18.12.1)](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/)
 - *(Recommended IDE)* [VSCode](https://code.visualstudio.com/)
+- [react](https://react.dev/)
+- [react-dom](https://react.dev/reference/react-dom)
 
 ## My Table of Content
 
@@ -115,6 +117,6 @@ The `ReactModal` component props you need:
 |title| 	string|	Title of the modal|	'' | 
 | message | string	|Message to display in the modal	|'' |
 | children | node	|Custom content to display in the modal	|null |
-| modalBackground | string	Background color of the modal	#fff|
+| modalBackground | string|	Background color of the modal|	#fff|
 | closeButtonBackground | string	|Background color of the close button	|#000 |
 | closeButtonHoverBackground | string |Background color of the close button on hover |#ff0000 | 
