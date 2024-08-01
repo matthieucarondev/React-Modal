@@ -1,70 +1,120 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-modal-mc 
 
-## Available Scripts
+This is a modal component for React. Developped for a student project and used in [P14-hrnet]
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+- [Node.js (Version 18.12.1)](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- *(Recommended IDE)* [VSCode](https://code.visualstudio.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## My Table of Content
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props](#Props)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can install the `react-modal-mc ` package using npm:
 
-### `npm run build`
+```bash
+npm i react-modal-mc
+```
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Import `ReactModal` in your React component:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```jsx
+import ReactModal from "react-modal-mc";
+```	
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Implement `ReactModal` in your React component:
 
-### `npm run eject`
+```jsx
+const App = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  return (
+    <div>
+      <button onClick={handleOpenModal}>Open Modal</button>
+      <ReactModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        title="Modal Title"
+        message="This is a customizable message."
+        modalBackground="#fff"
+        closeButtonBackground="#000"
+        closeButtonHoverBackground="#ff0000"
+      >
+      </ReactModal>
+    </div>
+  );
+};
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default App;
+```
 
-## Learn More
+You can also display Modal without an Opening button, this an exemple with a confirmed Form : 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```jsx
+const FormWithModal = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Perform form submission logic here
+    setModalOpen(true);
+  };
 
-### Code Splitting
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Enter your name" required />
+        <button type="submit">Submit</button>
+      </form>
+      <ReactModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        title="Form Submitted"
+        message="Thank you for your submission."
+        modalBackground="#fff"
+        closeButtonBackground="#000"
+        closeButtonHoverBackground="#ff0000"
+      >
+        <p>Your form has been successfully submitted.</p>
+      </ReactModal>
+    </div>
+  );
+};
 
-### Analyzing the Bundle Size
+export default FormWithModal;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Props
 
-### Making a Progressive Web App
+The `ReactModal` component props you need:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Prop | Type | Description | Default Value |
+| ---- | ---- | ----------- |  ------------- |
+| isOpen | boolean	|Determines if the modal is open or closed	|false | 
+| onClose| function	|Function to call when the modal is closed	|undefined | 
+|title| 	string|	Title of the modal|	'' | 
+| message | string	|Message to display in the modal	|'' |
+| children | node	|Custom content to display in the modal	|null |
+| modalBackground | string	Background color of the modal	#fff|
+| closeButtonBackground | string	|Background color of the close button	|#000 |
+| closeButtonHoverBackground | string |Background color of the close button on hover |#ff0000 | 
