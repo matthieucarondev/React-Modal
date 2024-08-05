@@ -1,5 +1,5 @@
 
-# react-modal-mc - version 1.3.5
+# react-modal-mc - version 1.3.6
 
 This is a modal component for React. Developped for a student project and used in [P14-hrnet]
 
